@@ -1,6 +1,17 @@
 import { StudentItem } from './StudentItem';
 
-const StudentsList = ({students}) => {
+const StudentsList = ({data: students, wordToSearch}) => {
+
+  const filterBySearch = (wordToSearch) => {
+    wordToSearch = wordToSearch.toUpperCase();
+    return students.filter(student => {
+      let str = `${student.name} ${student.lastName} ${student.sku}`.toUpperCase();
+      return str.indexOf(wordToSearch) >= 0;
+    })
+  };
+
+  let filteredStudents = filterBySearch(wordToSearch);
+
   return (
     <div>
       <div>
@@ -9,7 +20,7 @@ const StudentsList = ({students}) => {
         </div>
       </div>
       <div>
-        {students.map((student) => <StudentItem key={student.sku} student={student} />)}
+        {filteredStudents.map((student) => <StudentItem key={student.sku} student={student} />)}
       </div>
     </div>
   )
