@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { students } from './../../assests/data/students';
+import { students } from '../../../assests/data/students';
 import StudentsList from './StudentList';
 
 const StudentListWithSearch = () => {

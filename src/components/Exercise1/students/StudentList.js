@@ -1,4 +1,6 @@
 import { StudentItem } from './StudentItem';
+import { students } from '../../../assests/data/students';
+import { withSearch } from '../hoc/withSearch';
 
 const StudentsList = ({data: students, wordToSearch}) => {
 
@@ -26,4 +28,7 @@ const StudentsList = ({data: students, wordToSearch}) => {
   )
 }
 
-export default StudentsList;
+// Como necesitamos la data aca para pasarcela a withSearch, es posible que en un ambito real no la tengamos en este punto.
+// En ese caso en el componente padre que seguramente si la tengamos podemos crear el componente de la misma forma, es decir:
+// const StudentListSearchHOC = withSearch(StudentsList, data);
+export default withSearch(StudentsList, students);

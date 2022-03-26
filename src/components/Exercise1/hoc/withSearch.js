@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export const ListSearcher = (WrappedComponent, data) => {
+export const withSearch = (WrappedComponent, data) => {
   
-  return function WithSearch(props) {
+  return function() {
     const [wordToSearch, setWordToSearch] = useState('');
     
     const searchInputHandler = (ev) => {
